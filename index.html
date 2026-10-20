@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#203a36">
-<meta name="description" content="Read the rediscovered Herculaneum papyri in Greek, English and an optional modern interpretation. An independent project for curious readers.">
+<meta name="description" content="Read a passage from a Herculaneum papyrus with Greek text, an English working translation and notes.">
 <title>Phoenix Scrolls — Herculaneum, made readable</title>
 <link rel="stylesheet" href="./assets/style.css?v=0.2.0">
-<script type="module" src="./assets/app.mjs?v=0.2.0"></script>
+<script type="module" src="./assets/app.mjs?v=0.2.1"></script>
 </head>
 <body>
 <a class="skip" href="#reader">Skip to the text</a>
@@ -18,17 +18,17 @@
 </header>
 <main>
   <section class="hero" aria-labelledby="hero-title">
-    <div class="eyebrow">The Herculaneum papyri · A reading pilot</div>
-    <h1 id="hero-title">A voice from<br><em>the ashes.</em></h1>
-    <p class="lead">Read a surviving thought, not just a digital fragment. Explore the Greek, compare an English working translation, and discover a more accessible modern reading.</p>
+    <div class="eyebrow">The Herculaneum papyri</div>
+    <h1 id="hero-title">A scroll from<br><em>Herculaneum.</em></h1>
+    <p class="lead">Read a passage from PHerc. 1667, a philosophical scroll found at Herculaneum. The Greek appears alongside an English working translation.</p>
     <a class="primary" href="#reader">Start reading <span aria-hidden="true">↘</span></a>
-    <p class="hero-note">One short passage to begin with. Not a complete edition.</p>
+    <p class="hero-note">This first release contains a short excerpt from Column XVII.</p>
   </section>
   <section id="reader" class="reader-section" aria-labelledby="reading-title">
     <div class="reading-heading"><div><p class="eyebrow" id="inventory">PHerc. 1667</p><h2 id="reading-title">Opening the text…</h2></div><span class="badge">Working edition · not expert-reviewed</span></div>
     <p id="intro" class="intro"></p>
     <div id="error" class="error" role="alert" hidden><p id="error-message"></p><a href="./#reader">Open the current reading</a></div>
-    <noscript><p class="error">This interactive reading sample needs JavaScript. The <a href="https://arxiv.org/html/2606.29085v1">published scholarly source</a> can be read without this interface. Look for Column 17 in the transcription section.</p></noscript>
+    <noscript><p class="error">The reader needs JavaScript. You can also read the passage in the <a href="https://arxiv.org/html/2606.29085v1">source publication</a>, under Column 17 in the transcription section.</p></noscript>
     <div id="reader-content" hidden>
       <div class="edition-bar">
         <label>Scroll <select id="scroll" aria-label="Choose a scroll"></select></label>
@@ -44,24 +44,24 @@
           </div>
           <div class="type-controls" role="group" aria-label="Reading text size"><button id="smaller" type="button" aria-label="Smaller reading text">A−</button><output id="size-label" aria-live="polite">100%</output><button id="larger" type="button" aria-label="Larger reading text">A+</button></div>
         </div>
-        <div class="mobile-control"><label for="mobile-layer">Read in</label><select id="mobile-layer"></select><span>Same passage, another view.</span></div>
+        <div class="mobile-control"><label for="mobile-layer">Read in</label><select id="mobile-layer"></select><span>Switch versions at the same passage.</span></div>
         <div class="passage-meta"><span id="reference"></span><span class="compare-hint">Select a phrase to compare it.</span></div>
         <p id="boundary-start" class="boundary"></p>
         <div id="panels" class="parallel"></div>
         <p id="boundary-end" class="boundary"></p>
-        <div class="reader-foot"><span>English is a project draft, not the published translation.</span><button id="share" type="button" class="text-button">Copy passage link ↗</button></div>
+        <div class="reader-foot"><span>The English translation is a Phoenix Scrolls working draft.</span><button id="share" type="button" class="text-button">Copy passage link ↗</button></div>
       </div>
       <div id="share-fallback" hidden><label for="share-url">Permanent link to this edition</label><input id="share-url" type="text" readonly></div>
       <p id="notice" class="status" role="status"></p><p id="alignment-status" class="sr-only" role="status"></p>
-      <section class="notes" aria-labelledby="notes-title"><div><p class="eyebrow">A closer look</p><h3 id="notes-title">What can we say?</h3><p>Notes explain our wording. They are not additional words by the ancient author.</p></div><div id="notes-list"></div></section>
-      <details id="source-details" class="source-details"><summary>Source, editorial choices & permissions</summary><div class="source-body"><p><a id="source-link" href="https://arxiv.org/html/2606.29085v1">Read the scholarly source ↗</a></p><p id="citation"></p><p id="source-check"></p><p id="credit"></p><p id="rights"></p><p id="edition-note"></p><p><a href="https://github.com/jo-tud/phoenix-scrolls/blob/main/docs/PERMISSIONS_REQUEST.md">Permissions request draft (not sent)</a></p></div></details>
+      <section class="notes" aria-labelledby="notes-title"><div><p class="eyebrow">About this passage</p><h3 id="notes-title">Translation notes</h3><p>These notes explain the English wording and what remains uncertain in the excerpt.</p></div><div id="notes-list"></div></section>
+      <details id="source-details" class="source-details"><summary>Sources and permissions</summary><div class="source-body"><p><a id="source-link" href="https://arxiv.org/html/2606.29085v1">Read the scholarly source ↗</a></p><p id="citation"></p><p id="source-check"></p><p id="credit"></p><p id="rights"></p><p id="edition-note"></p><p><a href="https://github.com/jo-tud/phoenix-scrolls/blob/main/docs/PERMISSIONS_REQUEST.md">Permissions request draft (not sent)</a></p></div></details>
     </div>
   </section>
   <section id="guide" class="guide" aria-labelledby="guide-title">
-    <div><p class="eyebrow">Three ways into one text</p><h2 id="guide-title">Start with curiosity.<br>Go as deep as you like.</h2><p>You do not need to know Greek. The source is there for comparison, not as an entrance exam.</p></div>
-    <div class="guide-cards"><article><span class="step">01</span><h3>Greek</h3><p>A short quotation of the scholarly transcription. Underdots retain uncertain letter readings.</p></article><article><span class="step">02</span><h3>English</h3><p>Our close working rendering. It stays separate from the researchers’ published translation.</p></article><article><span class="step">03</span><h3>Modern Reading</h3><p>An optional interpretation in everyday language. It does not fill gaps or replace the source.</p></article></div>
+    <div><p class="eyebrow">Reader guide</p><h2 id="guide-title">Reading the passage</h2><p>The buttons above the text let you choose which versions to show. On a phone, use “Read in” to switch between them.</p></div>
+    <div class="guide-cards"><article><span class="step">01</span><h3>Greek</h3><p>The Greek follows the researchers’ transcription. A dot beneath a letter means that its reading is uncertain.</p></article><article><span class="step">02</span><h3>English</h3><p>An English working translation prepared for Phoenix Scrolls. The notes explain some of the translation choices.</p></article><article><span class="step">03</span><h3>Modern Reading</h3><p>An optional paraphrase in everyday English. It presents our interpretation of the surviving text; gaps remain open.</p></article></div>
   </section>
 </main>
-<footer class="site-footer"><div><strong>Phoenix Scrolls</strong><p>An independent educational project, exclusively about the Herculaneum papyri. Not affiliated with the Vesuvius Challenge.</p></div><div><a href="https://scrollprize.org/firstscroll">The research behind the text ↗</a><a href="https://github.com/jo-tud/phoenix-scrolls">Code, sources & editorial history ↗</a><span>Reading pilot 0.2 · Settings stay in your browser. No project analytics.</span></div></footer>
+<footer class="site-footer"><div><strong>Phoenix Scrolls</strong><p>An independent educational project about the Herculaneum papyri. Not affiliated with the Vesuvius Challenge.</p></div><div><a href="https://scrollprize.org/firstscroll">The research behind the text ↗</a><a href="https://github.com/jo-tud/phoenix-scrolls">Code, sources & editorial history ↗</a><span>Reading pilot 0.2.1 · Settings stay in your browser. No project analytics.</span></div></footer>
 </body>
 </html>

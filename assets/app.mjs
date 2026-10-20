@@ -4,7 +4,7 @@ const $ = id => document.getElementById(id);
 const STORAGE = 'phoenix-scrolls.preferences.v2';
 const narrow = matchMedia('(max-width: 680px)');
 const titles = { greek: 'Greek transcription', english: 'English', modern: 'Modern Reading' };
-const subtitles = { greek: 'Short scholarly quotation · uncertain letters retained', english: 'Project working translation · not expert-reviewed', modern: 'Interpretive adaptation · not a literal translation' };
+const subtitles = { greek: 'Excerpt from the published Greek transcription', english: 'Project working translation · not expert-reviewed', modern: 'Interpretive paraphrase in everyday English' };
 let settings;
 try { settings = preferences(JSON.parse(localStorage.getItem(STORAGE))); }
 catch { settings = preferences(); }
@@ -93,7 +93,7 @@ async function render() {
   $('source-check').textContent = `Source check: ${source.checkedOn}. ${source.inspection}`;
   $('credit').textContent = edition.credit;
   $('rights').textContent = source.rights;
-  $('edition-note').textContent = `Phoenix Scrolls edition ${edition.id}. The passage heading is our own; it is not an ancient title. A copied passage link includes this edition ID.`;
+  $('edition-note').textContent = `Phoenix Scrolls edition ${edition.id}. We wrote the passage heading for this site. Copied links include the edition ID.`;
   for (const layer of settings.layers.filter(k => k !== 'greek')) {
     let stale = false;
     try { stale = (await Promise.all(passage.units.map(u => needsReview(u, layer)))).some(Boolean); }
