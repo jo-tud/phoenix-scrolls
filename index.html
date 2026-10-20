@@ -7,7 +7,8 @@
 <meta name="description" content="Read a passage from a Herculaneum papyrus with Greek text, an English working translation and notes.">
 <title>Phoenix Scrolls — Herculaneum, made readable</title>
 <link rel="stylesheet" href="./assets/style.css?v=0.2.0">
-<script type="module" src="./assets/app.mjs?v=0.2.1"></script>
+<link rel="stylesheet" href="./assets/experience.css?v=0.3.0">
+<script type="module" src="./assets/app.mjs?v=0.3.0"></script>
 </head>
 <body>
 <a class="skip" href="#reader">Skip to the text</a>
@@ -19,11 +20,12 @@
 <main>
   <section class="hero" aria-labelledby="hero-title">
     <div class="eyebrow">The Herculaneum papyri</div>
-    <h1 id="hero-title">A scroll from<br><em>Herculaneum.</em></h1>
+    <h1 id="hero-title">A thought from<br><em>the ashes.</em></h1>
     <p class="lead">Read a passage from PHerc. 1667, a philosophical scroll found at Herculaneum. The Greek appears alongside an English working translation.</p>
     <a class="primary" href="#reader">Start reading <span aria-hidden="true">↘</span></a>
     <p class="hero-note">This first release contains a short excerpt from Column XVII.</p>
   </section>
+  <aside id="resume" class="resume" aria-label="Saved reading place" hidden><p id="resume-label"></p><div><button id="resume-go" class="quiet" type="button">Continue reading</button><button id="resume-clear" class="text-button" type="button">Forget this place</button></div></aside>
   <section id="reader" class="reader-section" aria-labelledby="reading-title">
     <div class="reading-heading"><div><p class="eyebrow" id="inventory">PHerc. 1667</p><h2 id="reading-title">Opening the text…</h2></div><span class="badge">Working edition · not expert-reviewed</span></div>
     <p id="intro" class="intro"></p>
@@ -35,6 +37,10 @@
         <label>Edition <select id="edition" aria-label="Choose an edition"></select></label>
         <label>Passage <select id="passage" aria-label="Choose a passage"></select></label>
       </div>
+      <div id="reading-dock" class="reading-dock">
+        <div class="reading-actions"><button id="focus-toggle" class="quiet" type="button" aria-pressed="false">Reading view</button><button id="open-notes" class="quiet" type="button">Notes</button><button id="open-sources" class="quiet" type="button">Sources</button><span id="place-label"></span></div>
+        <div id="mobile-tabs" class="mobile-tabs" role="tablist" aria-label="Text version"></div>
+      </div>
       <div class="reader-shell">
         <div class="toolbar">
           <div class="layer-options" role="group" aria-label="Visible text versions">
@@ -42,26 +48,31 @@
             <button type="button" data-layer="english" aria-pressed="true">English</button>
             <button type="button" data-layer="modern" aria-pressed="false">+ Modern Reading</button>
           </div>
+          <button id="mobile-modern" class="quiet mobile-only" type="button" aria-pressed="false">+ Modern Reading</button>
           <div class="type-controls" role="group" aria-label="Reading text size"><button id="smaller" type="button" aria-label="Smaller reading text">A−</button><output id="size-label" aria-live="polite">100%</output><button id="larger" type="button" aria-label="Larger reading text">A+</button></div>
         </div>
-        <div class="mobile-control"><label for="mobile-layer">Read in</label><select id="mobile-layer"></select><span>Switch versions at the same passage.</span></div>
-        <div class="passage-meta"><span id="reference"></span><span class="compare-hint">Select a phrase to compare it.</span></div>
+        <div class="passage-meta"><span id="reference"></span><span class="compare-hint">Use Compare to highlight matching phrases.</span></div>
+        <p class="swipe-hint mobile-only">Swipe sideways to compare. Scroll down to read.</p>
         <p id="boundary-start" class="boundary"></p>
-        <div id="panels" class="parallel"></div>
+        <div id="panels" class="parallel" tabindex="0" role="region" aria-label="Parallel text versions"></div>
         <p id="boundary-end" class="boundary"></p>
-        <div class="reader-foot"><span>The English translation is a Phoenix Scrolls working draft.</span><button id="share" type="button" class="text-button">Copy passage link ↗</button></div>
+        <div class="reader-foot"><span>The English translation is a Phoenix Scrolls working draft.</span><div><button id="copy-text" type="button" class="text-button">Copy text & citation</button><button id="share" type="button" class="text-button">Copy passage link ↗</button></div></div>
       </div>
-      <div id="share-fallback" hidden><label for="share-url">Permanent link to this edition</label><input id="share-url" type="text" readonly></div>
-      <p id="notice" class="status" role="status"></p><p id="alignment-status" class="sr-only" role="status"></p>
+      <label class="peek-option mobile-only"><input id="show-peeks" type="checkbox" checked> Show neighbouring text</label>
+      <div id="share-fallback" hidden><label id="copy-label" for="share-url">Copy this text</label><textarea id="share-url" rows="4" readonly></textarea></div>
+      <p id="notice" class="status" role="status"></p><p id="alignment-status" class="sr-only" role="status"></p><p id="version-status" class="sr-only" role="status"></p>
+      <aside id="reflection" class="reflection" aria-labelledby="reflection-title" hidden><div class="reflection-mark" aria-hidden="true">?</div><div><p class="eyebrow">A question for the reader</p><h3 id="reflection-title"></h3><p id="reflection-body"></p><button id="reflection-open" type="button" class="text-button">Consider the question ↗</button><span class="editorial-label">Editorial prompt · AI-assisted draft</span></div></aside>
       <section class="notes" aria-labelledby="notes-title"><div><p class="eyebrow">About this passage</p><h3 id="notes-title">Translation notes</h3><p>These notes explain the English wording and what remains uncertain in the excerpt.</p></div><div id="notes-list"></div></section>
-      <details id="source-details" class="source-details"><summary>Sources and permissions</summary><div class="source-body"><p><a id="source-link" href="https://arxiv.org/html/2606.29085v1">Read the scholarly source ↗</a></p><p id="citation"></p><p id="source-check"></p><p id="credit"></p><p id="rights"></p><p id="edition-note"></p><p><a href="https://github.com/jo-tud/phoenix-scrolls/blob/main/docs/PERMISSIONS_REQUEST.md">Permissions request draft (not sent)</a></p></div></details>
+      <details id="coverage" class="coverage" hidden><summary>Where this passage belongs</summary><p id="coverage-intro"></p><div id="column-map" class="column-map" aria-label="Coverage by column"></div><p class="map-legend"><span>● Excerpt on this site</span><span>○ Not yet on this site</span><span>· No secure transcription in the cited source</span></p><p id="coverage-loss"></p></details>
+      <details id="source-details" class="source-details"><summary>Sources and permissions</summary><div class="source-body"><p><a id="source-link" href="https://arxiv.org/html/2606.29085v1">Read the scholarly source ↗</a></p><p id="citation"></p><p id="source-check"></p><p id="credit"></p><p id="rights"></p><p id="edition-note"></p><p id="permissions-status"></p></div></details>
     </div>
   </section>
   <section id="guide" class="guide" aria-labelledby="guide-title">
-    <div><p class="eyebrow">Reader guide</p><h2 id="guide-title">Reading the passage</h2><p>The buttons above the text let you choose which versions to show. On a phone, use “Read in” to switch between them.</p></div>
+    <div><p class="eyebrow">Reader guide</p><h2 id="guide-title">Reading the passage</h2><p>On a phone, swipe between versions or tap their names. The matching passage stays in view. Notes open beside your reading place; Reading view gives the text more room.</p></div>
     <div class="guide-cards"><article><span class="step">01</span><h3>Greek</h3><p>The Greek follows the researchers’ transcription. A dot beneath a letter means that its reading is uncertain.</p></article><article><span class="step">02</span><h3>English</h3><p>An English working translation prepared for Phoenix Scrolls. The notes explain some of the translation choices.</p></article><article><span class="step">03</span><h3>Modern Reading</h3><p>An optional paraphrase in everyday English. It presents our interpretation of the surviving text; gaps remain open.</p></article></div>
   </section>
 </main>
-<footer class="site-footer"><div><strong>Phoenix Scrolls</strong><p>An independent educational project about the Herculaneum papyri. Not affiliated with the Vesuvius Challenge.</p></div><div><a href="https://scrollprize.org/firstscroll">The research behind the text ↗</a><a href="https://github.com/jo-tud/phoenix-scrolls">Code, sources & editorial history ↗</a><span>Reading pilot 0.2.1 · Settings stay in your browser. No project analytics.</span></div></footer>
+<dialog id="note-sheet" class="note-sheet" aria-labelledby="sheet-title"><div class="sheet-head"><h2 id="sheet-title"></h2><form method="dialog"><button id="sheet-close" class="quiet" aria-label="Close notes">Close</button></form></div><div id="sheet-body" class="sheet-body"></div></dialog>
+<footer class="site-footer"><div><strong>Phoenix Scrolls</strong><p>An independent educational project about the Herculaneum papyri. Not affiliated with the Vesuvius Challenge.</p></div><div><a href="https://scrollprize.org/firstscroll">The research behind the text ↗</a><a href="https://github.com/jo-tud/phoenix-scrolls">Code, sources & editorial history ↗</a><span>Reading pilot 0.3.0 · Settings and reading place stay in your browser. No project analytics.</span></div></footer>
 </body>
 </html>

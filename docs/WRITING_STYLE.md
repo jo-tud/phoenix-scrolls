@@ -6,11 +6,19 @@ Applies to homepage copy, navigation, introductions to the interface and help te
 
 Name the object, the passage or the action. Explain what the reader can do and what is available now. Use ordinary English and explain a specialist term when it first appears. Prefer a complete, informative sentence to a pair of slogans. Let sentence length follow the thought; a succession of very short sentences can feel just as formulaic as ornate prose.
 
+## Make room for interest
+
+A well-chosen image or memorable headline is welcome. “A thought from the ashes.” is our opening line. Keep the surrounding instructions concrete so that the metaphor has room to work. The goal is a pleasurable reading experience for curious non-specialists, rather than uniform institutional prose.
+
+Add occasional, passage-specific questions that invite reflection. A prompt must cite its source passage, distinguish the ancient wording from a present-day question, and explain what the fragment leaves unresolved. One prompt may be enough for several short passages. Do not manufacture an aphorism from isolated words, fill a gap, or attribute a modern example to the ancient author.
+
+Prompts are separate editorial records with edition and passage IDs, source fingerprints, revision, attribution and review status. A changed Greek source blocks their release until reviewed. Automated checks establish traceability; they do not certify a philosophical interpretation. Specialist review remains outstanding for our first prompt.
+
 Review these patterns when they accumulate:
 
 - **Decorative contrasts:** “not just X, but Y”, “X, not Y”, “more than X”. Keep a contrast when it distinguishes real alternatives or corrects a likely misunderstanding.
 - **Interchangeable invitations:** “explore”, “discover”, “delve into”, “unlock”, “go deeper”. Name the action or subject instead of adding an invitation to every section.
-- **Inflated or vague claims:** references to journeys, hidden voices or transformative experiences that add little information about this particular scroll.
+- **Inflated or vague claims:** references to journeys, hidden voices or transformative experiences that add little information about this particular scroll. A single purposeful headline can still use an image.
 - **Repetitive cadence:** matched sentence fragments, three-part promotional lists, repeated rhetorical questions and unnecessary summaries. Three genuine reading versions still warrant three explanations.
 - **Mechanical punctuation:** frequent dashes or colons used to manufacture emphasis. There is no ban on dashes, hyphens or any individual word.
 - **Self-praise and abstract labels:** explain an uncertain letter or a source link rather than repeatedly describing the project as accessible, rigorous or transparent.

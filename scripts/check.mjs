@@ -1,6 +1,8 @@
 import { readFile, mkdir, copyFile, cp, rm } from 'node:fs/promises';
 import { validate, needsReview } from '../assets/model.mjs';
+import { validateReadingNotes } from '../assets/reading.mjs';
 const data = validate(JSON.parse(await readFile('data/scrolls.json', 'utf8')));
+const notes = await validateReadingNotes(JSON.parse(await readFile('data/reading-notes.json', 'utf8')), data);
 let count = 0;
 for (const scroll of data.scrolls) for (const edition of scroll.editions) for (const passage of edition.passages) {
   for (const unit of passage.units) for (const layer of ['english','modern']) {
@@ -9,9 +11,9 @@ for (const scroll of data.scrolls) for (const edition of scroll.editions) for (c
   count++;
 }
 const html = await readFile('index.html', 'utf8');
-for (const file of ['assets/app.mjs','assets/model.mjs','assets/style.css']) await readFile(file, 'utf8');
+for (const file of ['assets/app.mjs','assets/model.mjs','assets/reading.mjs','assets/experience.mjs','assets/style.css','assets/experience.css']) await readFile(file, 'utf8');
 if (!html.includes('data-layer="modern" aria-pressed="false"')) throw new Error('Modern Reading must start disabled');
-console.log(`Content checks passed: ${data.scrolls.length} scroll(s), ${count} passage(s).`);
+console.log(`Content checks passed: ${data.scrolls.length} scroll(s), ${count} passage(s), ${notes.passages.filter(p => p.reflection).length} editorial prompt(s).`);
 if (process.argv.includes('--build')) {
   await rm('_site', { recursive: true, force: true }); await mkdir('_site');
   await copyFile('index.html', '_site/index.html');

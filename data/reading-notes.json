@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-20",
+  "permissions": {
+    "angelotti-2026-v1": {
+      "status": "inquiry-sent-awaiting-reply",
+      "text": "Awaiting a reply to the permissions enquiry. Reuse terms for larger text and image reproductions are still to be confirmed."
+    }
+  },
+  "passages": [
+    {
+      "scrollId": "pherc-1667",
+      "editionId": "2026-10-20-pilot-1",
+      "passageId": "col-17-l1-6",
+      "sourceId": "angelotti-2026-v1",
+      "noteLinks": { "seeking": [0, 2], "our-nature": [1, 2] },
+      "reflection": {
+        "id": "the-seeker",
+        "revision": "2026-10-20.1",
+        "status": "editorial-draft",
+        "credit": "Phoenix Scrolls editorial question, AI-assisted; awaiting specialist review.",
+        "title": "What could make a search fail?",
+        "body": "These words connect an unsuccessful search with turning away from ourselves and our nature. What is being sought remains unspecified.",
+        "question": "What assumptions about yourself shape the questions you ask?",
+        "grounding": "The question above is a present-day prompt. It starts from the conditional link in this excerpt between seeking, failing to obtain, and departing from ourselves and our nature.",
+        "limits": "This short excerpt does not define our nature or identify the object of the search. It does not establish a general instruction to follow personal feelings. The surrounding argument is incomplete.",
+        "reference": "PHerc. 1667, Column XVII, selected words in lines 1–6",
+        "unitIds": ["seeking", "our-nature"],
+        "basedOnGreek": ["e79cb02ed184a940c5f5a5a1c3a26ce104a1b9750d678f3c92b4c996dd984a90", "16cf00dfa407bda0c1f0d45a1e9aa8fd9f9446c03335e69c1bad29c9596becfe"]
+      }
+    }
+  ],
+  "coverage": [
+    {
+      "scrollId": "pherc-1667",
+      "editionId": "2026-10-20-pilot-1",
+      "sourceId": "angelotti-2026-v1",
+      "columnCount": 22,
+      "untranscribedInSource": [1, 2, 3],
+      "available": [{ "column": 17, "passageId": "col-17-l1-6", "label": "Selected words in lines 1–6" }],
+      "note": "The paper describes 22 surviving columns or column-equivalents, all fragmentary. This map shows what is available on Phoenix Scrolls. Further transcriptions are in the source publication.",
+      "lossNote": "Missing ancient writing and text awaiting publication here are different things. Excerpt boundaries describe what our reading leaves out; the source edition marks lost or uncertain writing."
+    }
+  ]
+}
