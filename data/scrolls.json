@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "collection": "Herculaneum papyri",
+  "scrolls": [
+    {
+      "id": "pherc-1667",
+      "inventory": "PHerc. 1667",
+      "title": "An ancient philosophical treatise",
+      "titleStatus": "modern-descriptive",
+      "status": "editorial-preparation",
+      "intro": "A carbonized papyrus from Herculaneum, now being studied through virtual unwrapping. This preview contains no published ancient text yet.",
+      "source": {
+        "citation": "Angelotti et al. (2026), Complete virtual unwrapping and reading of a rolled Herculaneum papyrus",
+        "url": "https://arxiv.org/abs/2606.29085",
+        "rights": "Review exact rights of transcription and translation before republication."
+      },
+      "editions": [
+        {
+          "id": "prototype-2026-10",
+          "status": "placeholder",
+          "published": false,
+          "segments": [
+            {
+              "id": "col-01",
+              "label": "Column I",
+              "greek": null,
+              "english": null,
+              "modern": null,
+              "notes": "Editorial placeholder — no verified transcription or translation has been imported."
+            },
+            {
+              "id": "col-02",
+              "label": "Column II",
+              "greek": null,
+              "english": null,
+              "modern": null,
+              "notes": "This entry demonstrates navigation, not an asserted reading."
+            },
+            {
+              "id": "col-03",
+              "label": "Column III",
+              "greek": null,
+              "english": null,
+              "modern": null,
+              "notes": "Future additions will preserve missing and uncertain readings explicitly."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
