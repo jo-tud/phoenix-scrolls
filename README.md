@@ -34,3 +34,7 @@ Code: MIT (see LICENSE). **This license does not apply to third-party papyrus sc
 3. Create a separately attributed Modern Reading, mark interpretations and lacunae.
 4. Review the passage with a Greek specialist before presenting it as verified.
 5. Test adding a second scroll and a revised reading without breaking permanent references.
+
+## GitHub Pages deployment
+
+The Actions workflow in `.github/workflows/pages.yml` publishes the static site on pushes to `main`. In repository **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. The public site should then be available at `https://jo-tud.github.io/phoenix-scrolls/` after a successful deployment. Until the Pages workflow succeeds, that URL is not a verified live site.
