@@ -18,18 +18,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Validate data and internal references
+        uses: actions/checkout@v6
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Check reader syntax and behavior
         run: |
-          python3 -m json.tool data/scrolls.json > /dev/null
-          test -f index.html
-          test -f LICENSE
+          node --check assets/app.mjs
+          node --test tests/*.test.mjs
+      - name: Validate sources and stage the site
+        run: node scripts/check.mjs --build
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload static website
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

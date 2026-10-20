@@ -1,40 +1,67 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#172b2c">
-<meta name="description" content="Phoenix Scrolls brings the rediscovered papyri of Herculaneum closer to curious readers.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#203a36">
+<meta name="description" content="Read the rediscovered Herculaneum papyri in Greek, English and an optional modern interpretation. An independent project for curious readers.">
 <title>Phoenix Scrolls — Herculaneum, made readable</title>
-<style>
-:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#26322e;background:#f7f4ee;--paper:#fffdf8;--ink:#26322e;--muted:#5f6d68;--line:#dcd8cd;--accent:#986443;--deep:#172b2c}
-*{box-sizing:border-box}body{margin:0}button,select{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #c68c4c;outline-offset:3px}
-header{background:var(--deep);color:#f8f4e9;padding:17px max(22px,calc((100vw - 1240px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:750;letter-spacing:.1em}.mark{color:#e8b276;font-size:29px}header nav{display:flex;gap:22px;font-size:.87rem}header nav a{text-decoration:none;opacity:.85}header nav a:hover{text-decoration:underline}
-main{max-width:1240px;margin:auto;padding:40px 24px 80px}.eyebrow{color:var(--accent);font-size:.76rem;text-transform:uppercase;letter-spacing:.16em;font-weight:750}h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:500}h1{font-size:clamp(2.5rem,5vw,4.8rem);line-height:1.08;margin:14px 0 18px;max-width:850px}p{line-height:1.65}.lede{max-width:720px;color:var(--muted);font-size:1.15rem}.hero{padding-bottom:40px;border-bottom:1px solid var(--line)}.pill{display:inline-block;border:1px solid #c9b69c;color:#815a3b;padding:6px 12px;border-radius:30px;font-size:.78rem;font-weight:650}
-.section-title{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:30px 0 16px}.section-title h2{margin:0;font-size:2rem}.small{font-size:.84rem;color:var(--muted)}
-.reader{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 10px 30px #24322a0a}.toolbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:18px 20px;border-bottom:1px solid var(--line)}.toolbar label{font-size:.85rem;color:var(--muted)}.toolbar select{border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 11px;border-radius:8px}.toggles{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}.toggle{border:1px solid var(--line);background:transparent;color:var(--ink);padding:9px 13px;border-radius:8px}.toggle[aria-pressed=true]{background:var(--deep);color:white;border-color:var(--deep)}.toggle:disabled{opacity:.45;cursor:not-allowed}
-.panels{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));min-height:310px}.panel{padding:25px 24px;border-right:1px solid var(--line);min-width:0}.panel:last-child{border-right:0}.panel h3{font-family:system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.77rem;font-weight:700;margin:0 0 8px}.panel .body{font-family:Georgia,'Times New Roman',serif;font-size:1.12rem;line-height:1.7;margin-top:28px}.panel[data-kind=greek] .body{font-size:1.25rem}.panel[data-kind=modern]{background:#f9f3e9}.placeholder{color:#67716d;font-style:italic}.note{padding:17px 24px;background:#f1eee6;border-top:1px solid var(--line);font-size:.9rem;line-height:1.55}.controls{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-top:1px solid var(--line)}.controls button{background:transparent;border:1px solid var(--line);padding:9px 15px;border-radius:8px;color:var(--ink)}.controls button:disabled{opacity:.4;cursor:not-allowed}
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:34px 0}.info{border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--paper)}.info h3{font-size:1.24rem;margin:0 0 8px}.info p{margin:0;color:var(--muted);font-size:.92rem}.footer{margin-top:40px;border-top:1px solid var(--line);padding-top:22px;font-size:.87rem;color:var(--muted)}.footer a{text-decoration:underline}
-@media(max-width:760px){main{padding:30px 16px 50px}header{padding:16px}.toolbar{align-items:stretch}.toggles{margin-left:0;width:100%}.toggle{flex:1}.panels{grid-template-columns:1fr}.panel{border-right:0;border-bottom:1px solid var(--line);min-height:160px}.panel:last-child{border-bottom:0}.info-grid{grid-template-columns:1fr}h1{font-size:2.7rem}}
-@media(prefers-reduced-motion:no-preference){button{transition:background .15s,color .15s}}
-</style>
+<link rel="stylesheet" href="./assets/style.css?v=0.2.0">
+<script type="module" src="./assets/app.mjs?v=0.2.0"></script>
 </head>
 <body>
-<header><a class="brand" href="#top"><span class="mark" aria-hidden="true">✦</span><span>PHOENIX SCROLLS</span></a><nav aria-label="Main navigation"><a href="#reader">Read a scroll</a><a href="#about">About the project</a><a href="https://github.com/jo-tud/phoenix-scrolls">GitHub ↗</a></nav></header>
-<main id="top"><section class="hero"><div class="eyebrow">Herculaneum · A living edition</div><h1>Ancient words.<br>New life.</h1><p class="lede">Nearly two thousand years after the eruption of Vesuvius, carbonized scrolls are becoming readable again. Explore the words, the ideas, and what we still don't know.</p><span class="pill">First edition in preparation · PHerc. 1667</span></section>
-<section id="reader" aria-labelledby="reader-title"><div class="section-title"><div><div class="eyebrow">Explore the text</div><h2 id="reader-title">An ancient philosophical treatise</h2></div><span class="small">PHerc. 1667 · editorial preview</span></div>
-<div class="reader"><div class="toolbar"><label for="segment">Passage</label><select id="segment" aria-label="Select passage"></select><div class="toggles" role="group" aria-label="Reading layers"><button class="toggle" type="button" data-layer="greek" aria-pressed="true">Greek</button><button class="toggle" type="button" data-layer="english" aria-pressed="true">English</button><button class="toggle" type="button" data-layer="modern" aria-pressed="true">Modern reading</button></div></div><div id="panels" class="panels" style="--cols:3" aria-live="polite"></div><div class="note" id="editorial-note"></div><div class="controls"><button id="previous" type="button">← Previous</button><span class="small" id="position"></span><button id="next" type="button">Next →</button></div></div></section>
-<section id="about"><div class="section-title"><div><div class="eyebrow">Why this exists</div><h2>Understand the text. See the evidence.</h2></div></div><div class="info-grid"><article class="info"><h3>Read without Greek</h3><p>Accessible interpretations are kept separate from close translations, so you always know what is ancient and what is editorial.</p></article><article class="info"><h3>Uncertainty is visible</h3><p>Missing words, uncertain readings, and scholarly reconstruction will never be silently filled in.</p></article><article class="info"><h3>New readings, preserved history</h3><p>As Herculaneum research progresses, editions can be revised while older versions remain traceable.</p></article></div></section>
-<footer class="footer">An independent educational project focused exclusively on the Herculaneum papyri. <a href="https://arxiv.org/abs/2606.29085">Source publication</a> · <a href="https://scrollprize.org/">Vesuvius Challenge</a> · <a href="https://github.com/jo-tud/phoenix-scrolls">Source code</a>. No scholarly text has been reproduced in this prototype.</footer>
+<a class="skip" href="#reader">Skip to the text</a>
+<header class="site-header">
+  <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">✦</span><span>PHOENIX SCROLLS<small>Herculaneum, made readable.</small></span></a>
+  <nav aria-label="Main navigation"><a href="#reader">Read</a><a href="#guide">How to read</a><a href="https://github.com/jo-tud/phoenix-scrolls">GitHub ↗</a></nav>
+  <button id="theme" class="quiet" type="button" aria-pressed="false">Dark mode</button>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="eyebrow">The Herculaneum papyri · A reading pilot</div>
+    <h1 id="hero-title">A voice from<br><em>the ashes.</em></h1>
+    <p class="lead">Read a surviving thought, not just a digital fragment. Explore the Greek, compare an English working translation, and discover a more accessible modern reading.</p>
+    <a class="primary" href="#reader">Start reading <span aria-hidden="true">↘</span></a>
+    <p class="hero-note">One short passage to begin with. Not a complete edition.</p>
+  </section>
+  <section id="reader" class="reader-section" aria-labelledby="reading-title">
+    <div class="reading-heading"><div><p class="eyebrow" id="inventory">PHerc. 1667</p><h2 id="reading-title">Opening the text…</h2></div><span class="badge">Working edition · not expert-reviewed</span></div>
+    <p id="intro" class="intro"></p>
+    <div id="error" class="error" role="alert" hidden><p id="error-message"></p><a href="./#reader">Open the current reading</a></div>
+    <noscript><p class="error">This interactive reading sample needs JavaScript. The <a href="https://arxiv.org/html/2606.29085v1">published scholarly source</a> can be read without this interface. Look for Column 17 in the transcription section.</p></noscript>
+    <div id="reader-content" hidden>
+      <div class="edition-bar">
+        <label>Scroll <select id="scroll" aria-label="Choose a scroll"></select></label>
+        <label>Edition <select id="edition" aria-label="Choose an edition"></select></label>
+        <label>Passage <select id="passage" aria-label="Choose a passage"></select></label>
+      </div>
+      <div class="reader-shell">
+        <div class="toolbar">
+          <div class="layer-options" role="group" aria-label="Visible text versions">
+            <button type="button" data-layer="greek" aria-pressed="true">Greek</button>
+            <button type="button" data-layer="english" aria-pressed="true">English</button>
+            <button type="button" data-layer="modern" aria-pressed="false">+ Modern Reading</button>
+          </div>
+          <div class="type-controls" role="group" aria-label="Reading text size"><button id="smaller" type="button" aria-label="Smaller reading text">A−</button><output id="size-label" aria-live="polite">100%</output><button id="larger" type="button" aria-label="Larger reading text">A+</button></div>
+        </div>
+        <div class="mobile-control"><label for="mobile-layer">Read in</label><select id="mobile-layer"></select><span>Same passage, another view.</span></div>
+        <div class="passage-meta"><span id="reference"></span><span class="compare-hint">Select a phrase to compare it.</span></div>
+        <p id="boundary-start" class="boundary"></p>
+        <div id="panels" class="parallel"></div>
+        <p id="boundary-end" class="boundary"></p>
+        <div class="reader-foot"><span>English is a project draft, not the published translation.</span><button id="share" type="button" class="text-button">Copy passage link ↗</button></div>
+      </div>
+      <div id="share-fallback" hidden><label for="share-url">Permanent link to this edition</label><input id="share-url" type="text" readonly></div>
+      <p id="notice" class="status" role="status"></p><p id="alignment-status" class="sr-only" role="status"></p>
+      <section class="notes" aria-labelledby="notes-title"><div><p class="eyebrow">A closer look</p><h3 id="notes-title">What can we say?</h3><p>Notes explain our wording. They are not additional words by the ancient author.</p></div><div id="notes-list"></div></section>
+      <details id="source-details" class="source-details"><summary>Source, editorial choices & permissions</summary><div class="source-body"><p><a id="source-link" href="https://arxiv.org/html/2606.29085v1">Read the scholarly source ↗</a></p><p id="citation"></p><p id="source-check"></p><p id="credit"></p><p id="rights"></p><p id="edition-note"></p><p><a href="https://github.com/jo-tud/phoenix-scrolls/blob/main/docs/PERMISSIONS_REQUEST.md">Permissions request draft (not sent)</a></p></div></details>
+    </div>
+  </section>
+  <section id="guide" class="guide" aria-labelledby="guide-title">
+    <div><p class="eyebrow">Three ways into one text</p><h2 id="guide-title">Start with curiosity.<br>Go as deep as you like.</h2><p>You do not need to know Greek. The source is there for comparison, not as an entrance exam.</p></div>
+    <div class="guide-cards"><article><span class="step">01</span><h3>Greek</h3><p>A short quotation of the scholarly transcription. Underdots retain uncertain letter readings.</p></article><article><span class="step">02</span><h3>English</h3><p>Our close working rendering. It stays separate from the researchers’ published translation.</p></article><article><span class="step">03</span><h3>Modern Reading</h3><p>An optional interpretation in everyday language. It does not fill gaps or replace the source.</p></article></div>
+  </section>
 </main>
-<script>
-const state={segments:[],index:0,layers:{greek:true,english:true,modern:true}};
-const labels={greek:"Greek transcription",english:"Close English translation",modern:"Modern reading"};
-const select=document.getElementById("segment"),panels=document.getElementById("panels");
-function render(){const s=state.segments[state.index];if(!s)return;select.value=s.id;const active=Object.keys(state.layers).filter(k=>state.layers[k]);panels.style.setProperty("--cols",active.length);panels.replaceChildren();for(const kind of active){const article=document.createElement("article");article.className="panel";article.dataset.kind=kind;const h=document.createElement("h3");h.textContent=labels[kind];const meta=document.createElement("div");meta.className="small";meta.textContent=s.label;const p=document.createElement("p");p.className="body placeholder";p.textContent=s[kind]??"Not yet published. Verified text will appear here after source and rights review.";article.append(h,meta,p);panels.append(article)}document.getElementById("editorial-note").textContent=s.notes;document.getElementById("position").textContent=(state.index+1)+" of "+state.segments.length;document.getElementById("previous").disabled=state.index===0;document.getElementById("next").disabled=state.index===state.segments.length-1;for(const b of document.querySelectorAll("[data-layer]")){b.setAttribute("aria-pressed",String(state.layers[b.dataset.layer]));b.disabled=active.length===1&&state.layers[b.dataset.layer]}}
-document.querySelectorAll("[data-layer]").forEach(b=>b.addEventListener("click",()=>{state.layers[b.dataset.layer]=!state.layers[b.dataset.layer];render()}));
-select.addEventListener("change",()=>{state.index=state.segments.findIndex(s=>s.id===select.value);render()});
-document.getElementById("previous").addEventListener("click",()=>{state.index--;render()});document.getElementById("next").addEventListener("click",()=>{state.index++;render()});
-fetch("./data/scrolls.json").then(r=>{if(!r.ok)throw Error("data unavailable");return r.json()}).then(data=>{state.segments=data.scrolls[0].editions[0].segments;for(const s of state.segments){const o=document.createElement("option");o.value=s.id;o.textContent=s.label;select.append(o)}render()}).catch(()=>{document.getElementById("editorial-note").textContent="Data could not be loaded. Use a local web server or GitHub Pages to preview the reader.";});
-</script>
-</body></html>
+<footer class="site-footer"><div><strong>Phoenix Scrolls</strong><p>An independent educational project, exclusively about the Herculaneum papyri. Not affiliated with the Vesuvius Challenge.</p></div><div><a href="https://scrollprize.org/firstscroll">The research behind the text ↗</a><a href="https://github.com/jo-tud/phoenix-scrolls">Code, sources & editorial history ↗</a><span>Reading pilot 0.2 · Settings stay in your browser. No project analytics.</span></div></footer>
+</body>
+</html>

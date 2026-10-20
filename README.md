@@ -2,39 +2,42 @@
 
 **Herculaneum, made readable.**
 
-An independent, public-facing reading experience for the Herculaneum papyri, beginning with PHerc. 1667. Not affiliated with the Vesuvius Challenge.
+An independent reading project for people without training in Greek or papyrology. Exclusively the Herculaneum papyri, beginning with PHerc. 1667. Not affiliated with the Vesuvius Challenge.
 
-## Principles
+Website: https://jo-tud.github.io/phoenix-scrolls/
 
-- Herculaneum only: no generic classical-text catalog.
-- Reader-first: accessible English for curious readers, with Greek source available.
-- Three distinct layers: Greek transcription, close English translation, and a clearly labeled interpretive Modern Reading.
-- No invented reconstructions: missing passages remain visibly missing.
-- Every text version must have source, provenance, licensing, and review status.
-- New decipherments must not silently overwrite previous published readings.
+## Reading pilot 0.2
 
-## Current status
+One short attributed Greek quotation from Column XVII, with a project English working translation and an optional interpretive Modern Reading. Not a complete edition. English text is AI-assisted and has not been independently reviewed by a specialist. The published English translation and papyrus images are not redistributed.
 
-This is the **first working interface prototype**, with no papyrus transcription or translation reproduced. It intentionally uses clearly labeled editorial placeholders pending source and rights verification. The controls, reading layout, accessible navigation, responsive design and data schema are implemented.
+The reader provides Greek + English by default, optional Modern Reading, phrase alignment, mobile language switching, text size, light/dark themes, locally stored preferences, source disclosures and edition-specific links. Uncertain Greek letters retain their underdots. Invalid edition links never silently open a different edition.
 
-Open `index.html` in a browser, or deploy the repository to GitHub Pages.
+## Develop and check
 
-## Data model
+Requires Node.js 22+ for tests/build and any static web server for preview. No npm dependencies.
 
-`data/scrolls.json` contains a scroll manifest, source references, version identifiers, alignment anchors, editorial status, and three independent reading layers. Each new scroll is a separate manifest entry. Later revisions create new edition identifiers.
+```sh
+node --test tests/*.test.mjs
+node scripts/check.mjs --build
+python3 -m http.server 8000 --directory _site
+```
 
-## Rights
+Open http://localhost:8000/ (not the HTML file directly). GitHub Actions runs the checks, stages only `index.html`, `assets/` and `data/`, and deploys `_site` to GitHub Pages.
 
-Code: MIT (see LICENSE). **This license does not apply to third-party papyrus scans, modern scholarly editions, transcriptions or translations.** No such material is redistributed in this prototype. Check the exact rights of PHerc. 1667 scholarly translation before importing it.
+## Content architecture
 
-## Next editorial steps
+`data/scrolls.json` is the canonical pilot content; the UI does not duplicate its text. Scrolls contain independently identified editions, passages and aligned phrase units. Translation layers record SHA-256 fingerprints of their Greek source. Changing that source flags dependent drafts in the UI and blocks release until they are rechecked.
 
-1. Verify source edition and licensing of the Greek transcription and English translation.
-2. Import a small verified passage, preserving line/column references and uncertainty.
-3. Create a separately attributed Modern Reading, mark interpretations and lacunae.
-4. Review the passage with a Greek specialist before presenting it as verified.
-5. Test adding a second scroll and a revised reading without breaking permanent references.
+Never rewrite published edition content in place: add an edition ID, keep the old one, and update `currentEdition`. A second-scroll and a revision fixture are tested in memory; no invented scroll is published.
 
-## GitHub Pages deployment
+The pilot intentionally keeps a small static ES-module implementation. Astro/React and TEI/EpiDoc integration remain future engineering work, not completed features. The content model and tests are kept separate from rendering to ease that migration.
 
-The Actions workflow in `.github/workflows/pages.yml` publishes the static site on pushes to `main`. In repository **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. The public site should then be available at `https://jo-tud.github.io/phoenix-scrolls/` after a successful deployment. Until the Pages workflow succeeds, that URL is not a verified live site.
+## Rights and review
+
+Code: MIT. This does **not** license third-party editions, translations or images. See [source register](docs/SOURCES_AND_RIGHTS.md), [editorial policy](docs/EDITORIAL_POLICY.md), and the [unsent permissions request](docs/PERMISSIONS_REQUEST.md).
+
+No claim of permission for a complete scholarly translation, independent papyrus decipherment, expert review or institutional endorsement is made.
+
+## Test coverage
+
+See [QA notes](docs/QA.md). Twenty Node tests and eleven offline browser checks passed locally. The offline browser harness supplies data and hashing itself; this does not test live HTTP, clipboard permissions, storage persistence or the actual mobile devices of readers.
